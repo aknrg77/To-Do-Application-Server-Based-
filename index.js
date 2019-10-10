@@ -28,20 +28,20 @@ app.use(express.static('./assets')); //to access the static files
 app.use('/',require('./routes/index'));  // using the express router
 
 //('add-task')
-//app.use('/add-task',require('./routes/add_task'));
-app.post('/add-task',function(req,res){
+app.use('/add-task',require('./routes/add_task'));
+// app.post('/add-task',function(req,res){
 
-    Desc.create({
-        desc:req.body.desc
-    },function(err,newDesc){
-        if(err){
-            console.log('error in creating new item');
-            return;
-        }
-        console.log('******',newDesc);
-        return res.redirect('back');
-    });
-});
+//     Desc.create({
+//         desc:req.body.desc
+//     },function(err,newDesc){
+//         if(err){
+//             console.log('error in creating new item');
+//             return;
+//         }
+//         console.log('******',newDesc);
+//         return res.redirect('back');
+//     });
+// });
 
 
 
