@@ -8,23 +8,22 @@
     </head>
     <body>
         <h1>TO DO list :<%=title %></h1>
-
         <h2>Description</h2>
 
         <form action ='/add-task' method="POST">
-        <input type ="text" name ="desc" placeholder="e.g Write a letter" required>
-        
+        Description :<input type ="text" name ="desc" placeholder="e.g Write a letter" required>
+         Due Date : <input type = "date" name ="dateOfTask" required>
+        Category : 
+        <select name = "category">
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="School">School</option>
+            <option value="Audi">Audi</option>
+          </select>
+
         <button type ="submit">Add task</button>
-        <button type="submit">Delete Task</button>
-        
         </form>
-
-
-
-        <h3>Category</h3>
-
-
-        <h3>Due Date</h3>
+        
       
 
 
@@ -34,7 +33,12 @@
                 <% for(let i of desc_list) {%>
 
                     <li>
-                        <%=i.desc%>
+                        <h3><%=i.desc%></h3>
+                        <h5><%=i.dateOfTask%></h5>
+                        <h6><%=i.category%></h6>
+                    <div>
+                        <a href="/delete-task/?id=<%=i._id%>">Delete Task</a>
+                    </div>
                         
                     </li>
 
