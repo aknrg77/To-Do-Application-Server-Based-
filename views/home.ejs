@@ -4,41 +4,92 @@
             <%= title %>
         </title>
         <link rel ="stylesheet" href="/css/home.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">  <!--  requiring google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">   <!--  requiring google fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />  <!--  requiring bootstrap datepicker -->
+        <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,500&display=swap" rel="stylesheet">   <!--  requiring google fonts -->
+        <script src="https://kit.fontawesome.com/24e9d2e3e9.js" crossorigin="anonymous"></script>   <!--  requiring fontawesome icons -->
+        <style>
+            body{
+        background-color: powderblue;
+        font-family: 'Archivo Narrow', sans-serif;
+
+}
+        </style>
 
     </head>
     <body>
-        <h1>TO DO list :<%=title %></h1>
-        <h2>Description</h2>
-
-        <form action ='/add-task' method="POST">
-        Description :<input type ="text" name ="desc" placeholder="e.g Write a letter" required>
-         Due Date : <input type = "date" name ="dateOfTask" required>
-        Category : 
-        <select name = "category">
-            <option value="Personal">Personal</option>
-            <option value="Work">Work</option>
-            <option value="School">School</option>
-            <option value="Audi">Audi</option>
-          </select>
-
-        <button type ="submit">Add task</button>
+        <h1 id = "header">TO DO App</h1>
+        <div id = "formContainer">
+            <form action ='/add-task' method="POST">
+            <div class ="description">
+                <h2 class= "textDecoration">Description :</h2>
+                <input id = "descin" type ="text" name ="desc" placeholder="e.g Write a letter" required>
+            </div>
+            <div class ="a1">
+                <h2 class= "textDecoration">Due Date</h2>
+                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                    <input class="form-control"  type="text" name = "dateOfTask" readonly />
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+                        
+                
+            </div>
+            <div class ="a2" >
+                <h2 class = "textDecoration">Category :</h2>
+                <select name = "category">
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="School">School</option>
+                <option value="Others">Others</option>
+            </select>
+            </div>
+        </div>
+        <div id ="add">
+        <button style="position:relative; top:-150px; left: 43.5%;" class= "button-add" type ="submit"><i style="color:greenyellow; font-size: 5rem;"class="fas fa-plus"></i></button>
+        <div>
         </form>
+    
         
       
 
 
-        <div>
+        <div id= "Tasks">
 
             <ul>
                 <% for(let i of desc_list) {%>
-
-                    <li>
-                        <h3><%=i.desc%></h3>
-                        <h5><%=i.dateOfTask%></h5>
-                        <h6><%=i.category%></h6>
-                    <div>
-                        <a href="/delete-task/?id=<%=i._id%>">Delete Task</a>
+                   
+                    
+                   <li>
+                    <div class = "contents">
+                       <div style=" position: relative;left:30px;display:inline-block;top:30px;">
+                        <h3 id="sizeofDesc"><%=i.desc%></h3>
+                        <h5 id="sizeofDate"><i style =" padding:1%;font-size:3rem;" class="fas fa-calendar-week"></i><%=i.dateOfTask%></h5>
                     </div>
+                        <% if ( i.category == "Personal") { %>
+                        <div>
+                        <h6 style=" background-color:greenyellow; width: 170px; padding:1%; height:70px; display:inline-block; position: relative; left: 70%; top:-70px; " id="sizeofCategory"><%=i.category%></h6>
+                        </div>
+                        <% } else if ( i.category == "School") { %>
+                        <div>
+                        <h6 style="background-color:pink; display:inline-block; width: 170px; padding:1%; height:70px; position: relative; left: 70%; top:-70px; " id="sizeofCategory"><%=i.category%></h6>
+                        </div>
+                        <% } else if ( i.category == "Work") {%>
+                        <div>
+                        <h6 style=" background-color:burlywood; display:inline-block;width: 170px; padding:1%; height:70px; position: relative; left: 70%; top:-70px; " id="sizeofCategory"><%=i.category%></h6>
+                        </div>
+                        <% } else { %>
+                        <div>
+                        <h6 style=" background-color:maroon; display:inline-block;width: 170px; padding:1%; height:70px; position: relative; left: 70%; top:-70px; " id="sizeofCategory"><%=i.category%></h6>
+                        </div>
+                        <% } %>
+
+                    </div>
+                    <div id = "delete">
+                            <a href="/delete-task/?id=<%=i._id%>"><span style =" font-size:5rem; color:red"><i class="fas fa-trash-alt"></i></span></a>
+                    </div>
+               
                         
                     </li>
 
@@ -57,4 +108,24 @@
 
 
     </body>
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+   <!--requiring jquery-->
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+   <!--requiring jquery ui-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <script src = "/js/script.js"></script>
+    <!--requiring bootstrap-->
+
+
+
+    
+    
 </html>

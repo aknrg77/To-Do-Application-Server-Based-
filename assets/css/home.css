@@ -1,4 +1,117 @@
-body{
-    background-color: powderblue;
+#header{
+    margin-left: 4%;
+    font-size: 70px;
     text-align: center;
+}
+
+#datepicker{
+    width:100%;
+}
+#datepicker > span:hover{
+    cursor: pointer;
+}
+#Tasks{
+    position: relative;
+    width:100%;
+
+}
+ul{
+     list-style-type: none; 
+    }
+
+#formContainer{
+    height:300px;
+}
+.description{
+    box-shadow: 2px 5px 6px 5px #0c0b0b;
+    background-color: red;
+    width:70%;
+    margin-left:15%;
+}
+.a1{
+    box-shadow: 2px 5px 6px 5px #0c0b0b;
+    display: inline-block;
+    background-color:blueviolet;
+    margin-left: 15%;
+    padding: 0.6;
+    width:300px;
+}
+.a2{
+    box-shadow: 2px 5px 6px 5px #0c0b0b;
+    position: relative;
+    display: inline-block;
+    background-color:purple;
+    top:3%;
+    top:38px;
+    margin-left: 27%;
+    padding: 0.6;
+    width:300px;
+}
+.textDecoration{
+    margin-left: 2%;
+    font-weight: 20%;
+    color:white;
+}
+input{
+    color: white;
+    height: 30px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding:2%;
+}
+select{
+    height: 30px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+}
+#descin{
+    margin-left: 0%;
+    height:50px;
+}
+
+#delete{
+    position: relative;
+    top:100px;
+    display:inline-block;
+    vertical-align: top;
+    width: 70px;
+    left : 30px;
+}
+.contents{
+    font-family:  'Indie Flower', cursive;
+    margin-left: 11%;
+    width: 70%;
+    display:inline-block;
+    border:2px solid black;
+
+}
+h3{
+    left:30%;
+}
+#sizeofDesc{
+    margin-left: 7%;
+    font-size: 4rem;
+}
+#sizeofDate{
+    margin-left: 7%;
+    font-size: 3rem;
+}
+#sizeofCategory{
+    
+    font-size: 4rem;
+}
+.button-add {
+    box-shadow: 2px 5px 6px 5px #0c0b0b;
+    border-radius: 15px;
+    background-color:grey;        
+    cursor: pointer;        
+    height:70px;          
+    padding-left: 16px;     
+
+    width:150px;
+}
+#add{
+    margin-left:20px;
 }
