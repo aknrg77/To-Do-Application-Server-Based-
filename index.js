@@ -1,7 +1,12 @@
 const express = require('express');   //importing the express module
 const app = express();
-const port = 8000;      //port : 8000
+
+const env = require('./config/environment');
+
+const port = env.port;      //port : 8000
 var bodyParser = require('body-parser');
+
+
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.urlencoded({
     extended: true

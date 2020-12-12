@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
-mongoose.connect ('mongodb://localhost/todo');
+const env = require('../config/environment');
 
+
+mongoose.connect(env.databaseURL, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    }).then(() => console.log('DB Connected!')).catch(err => {
+    console.log(`DB Connection Error: ${err.message}`);
+    });
 
 const db = mongoose.connection;
 
 
 
-db.on('error',console.error.bind(console,'Connection error:'));
-db.once('open',function (){
-    console.log("connected to the database");
-})
+module.exports = db;
